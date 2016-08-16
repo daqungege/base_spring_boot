@@ -81,7 +81,7 @@ public class AccountService {
 		Account account = loginUsers.getIfPresent(token);
 
 		if (account == null) {
-			throw new ServiceException("用户没有登录", ErrorCode.UNAUTHORIZED);
+			throw new ServiceException("请重新登录", ErrorCode.UNAUTHORIZED);
 		}
 
 		return account;
