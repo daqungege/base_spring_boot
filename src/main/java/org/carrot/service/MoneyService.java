@@ -1,6 +1,7 @@
 package org.carrot.service;
 
 import com.google.common.collect.Lists;
+import org.carrot.domain.Account;
 import org.carrot.domain.Money;
 import org.carrot.repository.MoneyDao;
 import org.slf4j.Logger;
@@ -24,8 +25,9 @@ public class MoneyService {
     @Autowired
     private AccountService accountService;
 
-    public List<Money> list() {
-        return Lists.newArrayList(moneyDao.findAll());
+    public List<Money> list(String token) {
+        Account account = accountService.getLoginUser(token);
+        return moneyDao.findByAccount(account);
     }
 
     public Money add(String token, Money money) {

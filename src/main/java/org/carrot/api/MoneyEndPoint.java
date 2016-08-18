@@ -25,7 +25,7 @@ public class MoneyEndPoint {
 
     @RequestMapping(value = "/list", produces = MediaTypes.JSON_UTF_8)
     public List<Money> list(@RequestParam(value = "token") String token) {
-        return moneyService.list();
+        return moneyService.list(token);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = MediaTypes.JSON_UTF_8)
